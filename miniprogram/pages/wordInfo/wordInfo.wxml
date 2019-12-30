@@ -1,0 +1,26 @@
+<!--pages/wordInfo/wordInfo.wxml-->
+<view class="wrap van-hairline--bottom">
+  <view class='word'>{{info.word}}</view> 
+  <van-tag>标签</van-tag>
+  <van-tag wx:if="{{info.tag}}" type="primary">高考</van-tag>
+  <van-tag type="success">标签</van-tag>
+  <van-tag type="danger">标签</van-tag>
+  <van-tag type="warning">标签</van-tag>
+  <view class="pho" wx:if="{{info.phonetic}}">/{{info.phonetic}}/</view>
+  <van-cell-group>
+  <van-cell title="词义" title-width="80rpx" label="中文"  value="{{info.translation}} " />
+  <van-cell wx:if="{{info.definition}}" 
+            title="词义" 
+            title-width="80rpx" 
+            value="{{info.definition}}" label="英文"
+            border 
+  />
+  <van-cell wx:if="{{info.frq}}" 
+            title="词频顺序" 
+            title-width="200rpx" 
+            value="{{info.frq}}"
+            border
+  />
+  
+</van-cell-group>
+</view>

@@ -1,1 +1,6 @@
 /* miniprogram/pages/index/index.wxss */
+.vant-search{
+  background-color: #eee!important;
+  border-radius: 30rpx;
+  height: 75rpx;
+}

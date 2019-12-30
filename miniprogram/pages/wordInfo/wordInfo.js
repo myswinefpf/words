@@ -1,18 +1,27 @@
-// miniprogram/pages/index/index.js
+// pages/wordInfo/wordInfo.js
+const db = wx.cloud.database()
+const words = db.collection('wordsdb')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    info:{}
   },
-
+  pageData:{
+    id:''
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.pageData.id = options.id
+    words.doc(options.id).get().then(res => {
+      this.setData({
+        info: res.data
+      })
+    })
   },
 
   /**
@@ -62,23 +71,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  // 查询方法
-  onSearch(event){
-    wx.cloud.callFunction({
-      name: "search",
-      data:{
-        value: event.detail
-      }
-    }).then(res => {
-      console.log(res)
-      let id = res.result.data[0]._id
-      console.log(id)
-      wx.redirectTo({
-        url: `../wordInfo/wordInfo?id=${id}`,
-      })
-    })
   }
-
 })
